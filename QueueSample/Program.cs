@@ -16,7 +16,7 @@ namespace Wrox.ProCSharp.Collections
             {
                 Document doc = new Document("Doc " + i.ToString(), "content");
                 dm.AddDocument(doc);
-                Console.WriteLine("Added document {0}", doc.Title);
+                Console.WriteLine("Added document {0}，Current ThreadId {1}", doc.Title,Thread.CurrentThread.ManagedThreadId);
                 Thread.Sleep(new Random().Next(20));
             }
 

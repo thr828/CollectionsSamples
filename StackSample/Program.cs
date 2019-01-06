@@ -25,6 +25,7 @@ namespace Wrox.ProCSharp.Collections
                 Console.Write(alphabet.Pop());
             }
             Console.WriteLine();
+            Console.ReadKey();
 
 
         }

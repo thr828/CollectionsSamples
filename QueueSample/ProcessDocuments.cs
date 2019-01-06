@@ -5,18 +5,20 @@ namespace Wrox.ProCSharp.Collections
 {
     public class ProcessDocuments
     {
-        public static void Start(DocumentManager dm)
-        {
-            new Thread(new ProcessDocuments(dm).Run).Start();
-        }
+        private DocumentManager documentManager;
 
         protected ProcessDocuments(DocumentManager dm)
         {
             documentManager = dm;
         }
 
-        private DocumentManager documentManager;
 
+        public static void Start(DocumentManager dm)
+        {
+            new Thread(new ProcessDocuments(dm).Run).Start();
+        }
+
+   
         protected void Run()
         {
             while (true)
@@ -24,7 +26,7 @@ namespace Wrox.ProCSharp.Collections
                 if (documentManager.IsDocumentAvailable)
                 {
                     Document doc = documentManager.GetDocument();
-                    Console.WriteLine("Processing document {0}", doc.Title);
+                    Console.WriteLine("Processing document {0}，Current ThreadId {1}", doc.Title,  Thread.CurrentThread.ManagedThreadId);
                 }
                 Thread.Sleep(new Random().Next(20));
             }

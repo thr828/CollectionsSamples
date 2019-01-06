@@ -10,7 +10,7 @@ namespace Wrox.ProCSharp.Collections
         {
             lock (this)
             {
-                documentQueue.Enqueue(doc);
+                documentQueue.Enqueue(doc); //添加队列
             }
         }
 
@@ -19,7 +19,7 @@ namespace Wrox.ProCSharp.Collections
             Document doc = null;
             lock (this)
             {
-                doc = documentQueue.Dequeue();
+                doc = documentQueue.Dequeue();//取出队列，并删除此队列
             }
             return doc;
         }
